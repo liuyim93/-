@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>智能搜索框</title>
+<meta charset="UTF-8">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="input-search-box.js"></script>
+<style>
+.search
+{
+left: 0;
+position: relative;
+}
+.search_text
+{
+display: none;
+width: 300px;
+border: 1px #74c0f9 solid;
+background: #FFF;
+position: absolute;
+top: 24px;
+left: 0;
+color: #323232;
+}
+  .highlight_line{
+    font:14px/25px arial;
+    height:25px;
+    padding:0 8px;
+    cursor: pointer;
+  }
+  .highlight_line_actived{
+    background-color:#ebebeb;
+  }
+</style>
+</head>
+<body>
+<div class="search">
+<input type="text" name="search_text" data-search="search_text" />
+</div>
+<div class="search" style="margin-top:300px;">
+  <input type="text" name="search_text1" data-search="search_text1" />
+</div>
+<script type="text/javascript">
+  //测试用的数据，这里可以用AJAX获取服务器数据
+  //const test_list = ["前方高能", "前戏", "前端学什么", "前端周末班", "前端和后端的区别", "前端开发", "java是什么", "javascript", "java面试题及答案2020", "java语言", "jsk是什么意思", "js是什么意思", "javascript和java的区别", "java吧", "css"];
+  const test_list=[
+    {user_name:'张三',user_code:'123',pinyin:'zhangsan',pinyin_shouzimu:'zs'},
+    {user_name:'李四',user_code:'456',pinyin:'lisi',pinyin_shouzimu:'ls'}
+  ];
+  const test_list1=[
+    {user_name:'张三1',user_code:'123',pinyin:'zhangsan',pinyin_shouzimu:'zs'},
+    {user_name:'李四1',user_code:'456',pinyin:'lisi',pinyin_shouzimu:'ls'}
+  ];
+  inputSearchBox.data['search_text']=test_list;
+  inputSearchBox.data['search_text1']=test_list1;
+</script>
+</body>
+</html>
