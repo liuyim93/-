@@ -50,3 +50,17 @@ Function getNum(ByVal valueStr As String) as Integer
 	If valueStr="" Or IsNothing(valueStr) Or Not(IsNumeric(valueStr)) then exit Function	
 	getNum=CInt(valueStr)
 END Function
+
+''判断字符串是否包含某个字符串，包含则返回√，否则返回空
+Function getCheckContainStr(ByVal valueStr As String,ByVal containStr As String) as String	
+	getCheckContainStr=""
+	If valueStr="" Or IsNothing(valueStr) Or containStr="" Or IsNothing(containStr) then exit Function
+	If valueStr.Contains(containStr) then getCheckContainStr="√"	
+END Function
+
+''判断字符串是否等于某个字符串，等于则返回√，否则返回空
+Function getCheckEqualStr(ByVal valueStr As String,ByVal containStr As String) as String	
+	getCheckEqualStr=""
+	If valueStr="" Or IsNothing(valueStr) Or containStr="" Or IsNothing(containStr) then exit Function
+	If valueStr=containStr then getCheckEqualStr="√"	
+END Function

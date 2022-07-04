@@ -162,6 +162,44 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>包含：</Value>
+                    <Style>
+                      <FontFamily>宋体</FontFamily>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=IIf(code.TrimStr(Nothing).ToString().Contains("1"),"true","false")</Value>
+                    <Style>
+                      <FontFamily>宋体</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>16.75555mm</Top>
+            <Left>60.70139mm</Left>
+            <Height>6mm</Height>
+            <Width>25.35278mm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>57.15mm</Height>
         <Style>
@@ -266,6 +304,42 @@ Function getNumberItem(ByVal sourceStr As String,ByVal index as Integer) as Stri
 	if index=1 then getNumberItem=CStr(sourceStr mod 10)
 	if index=10 then getNumberItem=CStr(sourceStr \ 10)
 	if index=100 then getNumberItem=CStr(sourceStr \ 100)
+END Function
+
+
+'获取骨头对应的分数
+Function getItem(ByVal sourceStr As String,ByVal titleStr as String) as String	
+	getItem=""
+	If sourceStr="" Or IsNothing(sourceStr) then exit Function
+	If titleStr="" Or IsNothing(titleStr) then exit Function
+	Dim result as String
+	result =""
+	Dim arr1() as String 
+	Dim splitStr1 as String
+	splitStr1="|"
+	Dim splitStr2 as String
+	splitStr2=","
+	Dim arrLength2 as Integer
+	arr1=Split(sourceStr,splitStr1)
+	Dim i as Integer
+	for i=0 to UBound(arr1)-LBound(arr1)
+	if arr1(i)&lt;&gt;"" then 
+		Dim arr2() as String
+		arr2=Split(arr1(i),splitStr2)
+		arrLength2 =UBound(arr2) - LBound(arr2) + 1
+		if arrLength2&gt;=2 And arr2(0)=titleStr then 
+			result=arr2(1) 
+		End If
+	end if	
+	next i
+	getItem = result
+END Function
+
+'转换空字符串
+Function TrimStr(ByVal sourceStr As String) as String	
+	TrimStr=""
+	If sourceStr="" Or IsNothing(sourceStr) then exit Function	
+	TrimStr=sourceStr
 END Function</Code>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>54d978c1-48b0-4c2d-a86d-dd1cd17dee89</rd:ReportID>
